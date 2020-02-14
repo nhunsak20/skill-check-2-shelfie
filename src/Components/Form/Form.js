@@ -10,20 +10,33 @@ class Form extends Component {
         this.state = {
             name: '',
             price: 0,
-            imgURL: ''
+            imgURL: '',
+            inventory: {}
         }
         this.addInventory = this.addInventory.bind(this)
     }
 
     componentDidMount() {
+        axios.get('/api/inventory/').then(response => {
 
+            this.setState({
+                inventory: response.data
+            })
+        })
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps === this.props){
-            console.log('update')
+        if(prevProps === this.props.data){
+            console.log('props ' + this.props.data)
+            console.log('prev ' + prevProps)
+            // this.setState({
+            //     name: this.state.inventory.name,
+            //     price: this.state.inventory.price,
+            //     imgURL: this.state.inventory.img
+            // })   
         }
         console.log('nothing')
+        console.log(prevProps.data)
     }
 
     handleChangeImgURL(imgURL) {

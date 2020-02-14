@@ -10,6 +10,7 @@ const { SERVER_PORT, CONNECTION_STRING } = process.env
 app.use(express.json())
 
 app.get('/api/inventory', ctrl.getInventorys)
+app.get('/api/inventory/:id', ctrl.getInventory)
 app.post('/api/inventory', ctrl.addInventory)
 app.put('/api/inventory/:id', ctrl.updateInventory)
 app.delete('/api/inventory/:id', ctrl.deleteInventory)

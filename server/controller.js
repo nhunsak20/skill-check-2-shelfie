@@ -1,5 +1,5 @@
 module.exports = {
-    getInventorys: (req, res) => {
+    getInventorys: async (req, res) => {
         const db = req.app.get('db')
         db.get_inventorys().then(list => {
             res.status(200).send(list)
@@ -7,7 +7,16 @@ module.exports = {
             res.status(500).send(err)
         })
     },
-    addInventory: (req, res) => {
+    getInventory: async (req, res) => {
+        const db = req.app.get('db')
+        const { id } = req.params
+        db.get_inventorys(id).then(list => {
+            res.status(200).send(list)
+        }).catch(err => {
+            res.status(500).send(err)
+        })
+    },
+    addInventory: async (req, res) => {
         const db = req.app.get('db')
         const { name, price, img } = req.body
         db.add_inventory([name, price, img]).then(list => {
@@ -16,7 +25,7 @@ module.exports = {
             res.status(500).send(err)
         })
     },
-    updateInventory: (req, res) => {
+    updateInventory: async (req, res) => {
         const db = req.app.get('db')
         const { id } = req.params
         const { name, price, img } = req.body

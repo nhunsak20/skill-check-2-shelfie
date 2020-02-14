@@ -1,25 +1,41 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Form from '../Form/Form'
 
 
 import './Product.css'
-function Product(props) {
+class Product extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            inventory: this.props.inventory
+        }
+        this.edit = this.edit.bind(this)
+    }
+
+    edit() {
+
+        console.log(`product: ${this.state.inventory}`)
+        return <Form data={this.state.inventory.name} />
+    }
+
+    render() {
     return(
         <div className='product'>
             <div className='product-content'>
                 <div className='product-flex'>
-                    <img src={props.inventory.img} alt={`${props.inventory.name}-img`}/>
+                    <img src={this.state.inventory.img} alt={`${this.state.inventory.name}-img`}/>
                     <div className='product-info'>
                         <p>
-                            {props.inventory.name}
+                            {this.state.inventory.name}
                         </p>
                         <p>
-                            ${props.inventory.price}
+                            ${this.state.inventory.price}
                         </p>
                         <div className='product-buttons'>
-                            <button onClick={() => props.deleteFn(props.inventory.id)}>Delete</button>
-                            <Link to={`/edit/${props.inventory.id}`}>
-                                <button>Edit</button>
+                            <button onClick={() => this.pro.deleteFn(this.state.inventory.id)}>Delete</button>
+                            <Link to={`/edit/${this.state.inventory.id}`}>
+                                <button onClick={this.edit}>Edit</button>
                             </Link>
                         </div>
                     </div>
@@ -27,6 +43,7 @@ function Product(props) {
             </div>    
         </div>
     )
+    }
 }
 
 export default Product
