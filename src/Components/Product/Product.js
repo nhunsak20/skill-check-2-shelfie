@@ -33,7 +33,7 @@ class Product extends Component {
                             ${this.state.inventory.price}
                         </p>
                         <div className='product-buttons'>
-                            <button onClick={() => this.pro.deleteFn(this.state.inventory.id)}>Delete</button>
+                            <button onClick={() => this.props.deleteFn(this.state.inventory.id)}>Delete</button>
                             <Link to={`/edit/${this.state.inventory.id}`}>
                                 <button onClick={this.edit}>Edit</button>
                             </Link>
