@@ -1,3 +1,25 @@
+// import React from 'react'
+
+// import shelfie_icon from '../../assest/shelfie_icon.png'
+
+// import './Header.css'
+
+// function Header() {
+//     return(
+//         <header className='header'>
+//             <div className='header-content'>
+//                 <div className='header-icon'>
+//                     <img src={shelfie_icon} alt='shelfie-icon' />
+//                     <h1>Shelfie</h1>
+//                 </div>
+//             </div>
+//         </header>
+//     )
+// }
+
+// export default Header
+
+
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -23,7 +45,6 @@ class Header extends Component {
                         </Link>
                     </div>
                 </div>
-                
             </header>
         )
     }

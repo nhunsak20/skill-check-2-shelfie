@@ -1,3 +1,30 @@
+// import React from 'react'
+
+// import Product from '../Product/Product'
+
+// import './Dashboard.css'
+
+// function Dashboard(props) {
+//     const inventoryItem = props.inventorys.map(inventory => {
+//             return (
+//                 <Product 
+//                     key={inventory.id} 
+//                     inventory={inventory}
+//                     deleteFn={props.deleteFn}
+//                     editFn={props.editFn}
+//                 /> 
+//             )
+//     })
+
+//     return(
+//         <section className='dashboard'>
+//             {inventoryItem}
+//         </section>
+//     )
+// }
+
+// export default Dashboard
+
 import React, { Component } from 'react'
 import axios from 'axios'
 
@@ -6,13 +33,19 @@ import Product from '../Product/Product'
 import './Dashboard.css'
 
 class Dashboard extends Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             inventorys: []
         }
 
         this.deleteInventory = this.deleteInventory.bind(this)
+    }
+
+    componentDidUpdate(_, prevState) {
+        if(this.state !== prevState) {
+            this.getInventory()
+        }
     }
 
     componentDidMount() {
@@ -34,7 +67,7 @@ class Dashboard extends Component {
           })
           this.getInventory()
         }).catch(err => console.log(err))
-      }
+    }
 
     render() {
         const inventoryList = this.state.inventorys.map(inventory => {

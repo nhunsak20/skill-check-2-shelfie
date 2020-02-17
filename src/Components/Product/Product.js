@@ -1,41 +1,58 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import Form from '../Form/Form'
+// import React from 'react'
 
+// import './Product.css'
+
+// function Product(props) {
+//     return(
+//         <div className='product'>
+//             <div className='product-content'>
+//                 <div className='product-flex'>
+//                     <img src={props.inventory.img} alt={`${props.inventory.name}-img`}/>
+//                     <div className='product-info'>
+//                         <p>
+//                             {props.inventory.name}
+//                         </p>
+//                         <p>
+//                             ${props.inventory.price}
+//                         </p>
+//                         <div className='product-buttons'>
+//                             <button onClick={() => props.deleteFn(props.inventory.id)}>Delete</button>
+//                             <button onClick={() => props.editFn(props.inventory)}>Edit</button>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>    
+//         </div>
+//     )
+// }
+
+// export default Product
+
+
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 import './Product.css'
-class Product extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            inventory: this.props.inventory
-        }
-        this.edit = this.edit.bind(this)
-    }
 
-    edit() {
-
-        console.log(`product: ${this.state.inventory}`)
-        return <Form data={this.state.inventory.name} />
-    }
-
-    render() {
+function Product(props) {
     return(
         <div className='product'>
             <div className='product-content'>
                 <div className='product-flex'>
-                    <img src={this.state.inventory.img} alt={`${this.state.inventory.name}-img`}/>
+                    <img src={props.inventory.img} alt={`${props.inventory.name}-img`}/>
                     <div className='product-info'>
                         <p>
-                            {this.state.inventory.name}
+                            {props.inventory.name}
                         </p>
                         <p>
-                            ${this.state.inventory.price}
+                            ${props.inventory.price}
                         </p>
                         <div className='product-buttons'>
-                            <button onClick={() => this.props.deleteFn(this.state.inventory.id)}>Delete</button>
-                            <Link to={`/edit/${this.state.inventory.id}`}>
-                                <button onClick={this.edit}>Edit</button>
+                            <Link to='/'>
+                                <button onClick={() => props.deleteFn(props.inventory.id)}>Delete</button>
+                            </Link>
+                            <Link to={`/edit/${props.inventory.id}`}>
+                                <button onClick={() => {}}>Edit</button>
                             </Link>
                         </div>
                     </div>
@@ -43,7 +60,6 @@ class Product extends Component {
             </div>    
         </div>
     )
-    }
 }
 
 export default Product

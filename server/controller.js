@@ -10,7 +10,7 @@ module.exports = {
     getInventory: async (req, res) => {
         const db = req.app.get('db')
         const { id } = req.params
-        db.get_inventorys(id).then(list => {
+        db.get_inventory(id).then(list => {
             res.status(200).send(list)
         }).catch(err => {
             res.status(500).send(err)

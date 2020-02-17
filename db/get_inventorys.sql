@@ -1,1 +1,2 @@
-select * from inventory;
+select * from inventory
+order by id asc;
